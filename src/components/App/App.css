@@ -1,17 +1,96 @@
 @import url(../../vendor/normalize.css);
 @import url(../../vendor/fonts/fonts.css);
 
+:root {
+  --color-font-main: #fff;
+  --color-font-secondary: #8b8b8b;
+  --color-font-accent: #000;
+  
+  --color-bg-main: #202020;
+  --color-bg-accent: #073042;
+  --color-bg-1: #272727;
+  --color-bg-2: #2f2f2f;
+
+  --color-border-1: #dadada;
+  --color-border-2: #424242;
+
+  --color-accent-1: #3ddc84;
+  --color-accent-2: #4285f4;
+  --color-accent-3: #ee3465;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 .page {
   display: flex;
   flex-direction: column;
-  max-width: 1280px;
   min-width: 320px;
   min-height: 100vh;
-  margin: 0 auto;
-  background-color: #202020;
+  background-color: var(--color-bg-main);
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-weight: 400;
-  color: #fff;
+  color: var(--color-font-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  box-sizing: border-box;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 70px;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.section__title {
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0 0 70px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid var(--color-border-1);
+}
+
+.animation {
+  opacity: 1;
+  transition: opacity .2s ease;
+}
+
+.animation:hover {
+  opacity: .7;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1280px) {
+  .container {
+    padding: 0 30px;
+  }
+  
+  .section {
+    padding: 90px 0;
+  }
+  
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 14px;
+  }
+
+  .section {
+    padding: 70px 0;
+  }
+
+  .section__title {
+    font-size: 18px;
+    padding-bottom: 28px;
+    margin: 0 0 60px;
+  }
 }
