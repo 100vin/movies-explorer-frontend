@@ -1,0 +1,26 @@
+.header {
+  height: 74px;
+  background-color: var(--color-bg-main);
+}
+
+.header_type_main {
+  background-color: var(--color-bg-accent);
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.header__logotip {
+  flex: 0 0 38px;
+  display: block;
+  width: 38px;
+  height: 38px;
+  background-image: url(../../images/logotip.svg);
+  background-size: 38px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
