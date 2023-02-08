@@ -88,11 +88,19 @@
 }
 
 .auth__field-error {
+  display: block;
   box-sizing: border-box;
-  height: 24px;
+  height: 30px;
   padding: 6px 0;
   font-size: 10px;
   color: var(--color-accent-3);
+  line-height: .9em;
+}
+
+.auth__field-error_type_api {
+  height: auto;
+  padding-bottom: 15px;
+  text-align: center;
 }
 
 .auth__button {
@@ -105,6 +113,11 @@
   color: var(--color-font-main);
   background-color: var(--color-accent-2);
   cursor: pointer;
+}
+.auth__button:disabled {
+  background-color: var(--color-bg-1);
+  color: var(--color-font-secondary);
+  cursor: default;
 }
 
 .auth__buttons-text {
