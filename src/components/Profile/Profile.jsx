@@ -56,7 +56,6 @@ const Profile = ({ onUserEdit, onLogout }) => {
             <button 
               className="profile__button profile__button_action_edit animation"
               type="submit"
-              onClick={onUserEdit}
             >
               Редактировать
             </button>
