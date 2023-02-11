@@ -37,9 +37,8 @@ const SavedMovies = () => {
     mainApi.deleteMovie(movie._id)
       .then(() => {
         moviesApi.removeFromSaved(movie.movieId);
-        setFilteredMovies((savedMovies) => {
-          return savedMovies.filter(savedMovie => savedMovie._id !== movie._id)
-        });
+        setMovies(movies.filter(m => m._id !== movie._id));
+        setFilteredMovies(filteredMovies.filter(m => m._id !== movie._id));
       })
   }
 
