@@ -1,12 +1,11 @@
 import './Navigation.css';
-import { Link, NavLink, useLocation  } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { paths } from '../../utils/constants';
 
-const Navigation = ({ isLoggedIn, isMainPage, isOpen, onClick }) => {
+const Navigation = ({ isLoggedIn, isOpen, onClick }) => {
   return (
     <nav className="navigation">
-      { //isLoggedIn
-        !isMainPage // Временно для проверки
+      { isLoggedIn
         ? (<>
             <div className={`navigation__popup ${isOpen ? 'navigation__popup_opened': ''}`}>
               <div className="navigation__menu">

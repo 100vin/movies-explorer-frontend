@@ -93,13 +93,34 @@
   cursor: pointer;
 }
 
-/* .profile__button_action_edit {
-} */
+.profile__button_action_edit:disabled {
+  color: var(--color-font-secondary);
+  cursor: default;
+}
 
 .profile__button_action_logout {
   font-weight: 500;
   color: var(--color-accent-3);
 }
+
+.profile__error {
+  display: block;
+  box-sizing: border-box;
+  padding-bottom: 15px;
+  font-size: 10px;
+  text-align: center;
+  color: var(--color-accent-3);
+}
+
+.profile__status {
+  display: block;
+  box-sizing: border-box;
+  padding-bottom: 15px;
+  font-size: 12px;
+  text-align: center;
+  color: var(--color-accent-1);
+}
+
 
 @media screen and (max-width: 1280px) {
   .profile__title {
