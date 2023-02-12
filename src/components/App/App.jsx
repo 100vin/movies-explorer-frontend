@@ -28,6 +28,7 @@ const App = () => {
 
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [userResStatus, setUserResStatus] = useState(false);
 
   const [isNavPopupOpen, setIsNavPopupOpen] = useState(false);
   
@@ -108,12 +109,15 @@ const App = () => {
   }
 
   const handleUserEdit = (userData) => {
+    setUserResStatus(false);
     mainApi.setUserInfo(userData)
       .then((newUserData) => {
         setCurrentUser(newUserData);
+        setUserResStatus(200);
       })
       .catch((err) => {
         console.log(err);
+        setUserResStatus(err);
       })
   }
 
@@ -153,7 +157,7 @@ const App = () => {
             },
             {
               path: paths.profile,
-              element: <Profile onUserEdit={handleUserEdit} onLogout={handleLogout} />,
+              element: <Profile onUserEdit={handleUserEdit} onLogout={handleLogout} resStatus={userResStatus} />,
             },
           ],
         },
