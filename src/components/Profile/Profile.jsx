@@ -55,7 +55,6 @@ const Profile = ({ onUserEdit, onLogout, resStatus }) => {
                 type="email"
                 name="email"
                 pattern="^([\w]+@([\w-]+\.)+[\w]{2,})?$"
-                // pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
                 required
                 value={email || ''}
                 onChange={handleChange}

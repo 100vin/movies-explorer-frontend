@@ -1,5 +1,5 @@
 import './Register.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useFormValidation from '../../hooks/useFormValidation';
 import { paths } from '../../utils/constants';
@@ -7,23 +7,6 @@ import { paths } from '../../utils/constants';
 const Register = ({ onRegister }) => {
   const { values, errors, isValid, handleChange } = useFormValidation();
   const [apiError, setApiError] = useState('');
-
-  // const handleApiErrorMessage = () => {
-  //   if (apiError) {
-      // switch (apiError) {
-      //   case 409:
-      //     return 'Пользователь с таким email уже существует.';
-      //   case 500:
-      //     return 'При регистрации пользователя произошла ошибка.';
-      //   default:
-      //     return 'Произошла ошибка. Попробуйте позже.';
-      // }
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   handleApiErrorMessage();
-  // }, [apiRegisterError]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,7 +44,6 @@ const Register = ({ onRegister }) => {
                 type="email"
                 name="email"
                 pattern="^([\w]+@([\w-]+\.)+[\w]{2,})?$"
-                // pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
                 placeholder="user@yandex.ru"
                 required
                 value={values.email || ''}

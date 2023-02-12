@@ -1,3 +1,10 @@
+// export const mainApiBaseUrl = 'https://api.diploma.100vin.nomoredomains.club';
+export const mainApiBaseUrl = 'http://localhost:3001';
+export const moviesApiBaseUrl = 'https://api.nomoreparties.co/beatfilm-movies';
+
+export const mediaBaseUrl = 'https://api.nomoreparties.co';
+export const durationShortMovie = 40;
+
 export const paths = {
   main: '/',
   movies: '/movies',
@@ -30,10 +37,3 @@ export const renderConst = [
     add: 2,
   },
 ];
-
-export const durationShortMovie = 40;
-export const mediaBaseUrl = 'https://api.nomoreparties.co';
-
-// export const mainApiBaseUrl = 'https://api.diploma.100vin.nomoredomains.club';
-export const mainApiBaseUrl = 'http://localhost:3001';
-export const moviesApiBaseUrl = 'https://api.nomoreparties.co/beatfilm-movies';

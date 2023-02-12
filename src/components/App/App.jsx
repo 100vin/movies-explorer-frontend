@@ -105,7 +105,6 @@ const App = () => {
     setIsLoggedIn(false);
     mainApi.reset();
     moviesApi.reset();
-    // navigate(paths.main);
   }
 
   const handleUserEdit = (userData) => {

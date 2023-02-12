@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useFormValidation from '../../hooks/useFormValidation';
 import { paths } from '../../utils/constants';
@@ -6,28 +6,6 @@ import { paths } from '../../utils/constants';
 const Login = ({ onLogin }) => {
   const { values, errors, isValid, handleChange } = useFormValidation();
   const [apiError, setApiError] = useState('');
-
-  // const handleApiErrorMessage = () => {
-  //   if (apiError) {
-  //     switch (apiError) {
-  //       case 400:
-  //       case 401:
-  //         setApiErrorMessage('Вы ввели неправильный логин или пароль.');
-  //         break;
-  //       case 500:
-  //         setApiErrorMessage('При авторизации пользователя произошла ошибка.');
-  //         break;
-  //       default:
-  //         setApiErrorMessage('Произошла ошибка. Попробуйте позже');
-  //         break;
-  //     }
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   handleApiErrorMessage();
-  // }, [apiError]);
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +28,6 @@ const Login = ({ onLogin }) => {
                 type="email"
                 name="email"
                 pattern="^([\w]+@([\w-]+\.)+[\w]{2,})?$"
-                // pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
                 placeholder="user@yandex.ru"
                 required
                 value={values.email || ''}

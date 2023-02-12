@@ -1,5 +1,5 @@
 import './Navigation.css';
-import { Link, NavLink, useLocation  } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { paths } from '../../utils/constants';
 
 const Navigation = ({ isLoggedIn, isOpen, onClick }) => {

@@ -43,47 +43,10 @@ class Api {
     return this._fetch('/signin', 'POST', { email, password });
   }
 
-  // // Проверка валидности токена и получение email 
-  // getContent(token) {
-  //   return fetch(`${this._baseUrl}/users/me`, {
-  //     method: 'GET',
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Authorization" : `Bearer ${token}`
-  //     }
-  //   })
-  //   .then(this._handleResponse);
-  // }
-
-  // // Проверка валидности токена и получение данных пользователя 
-  // getTokenValid(token) {
-  //   return fetch(`${this._baseUrl}/users/me`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'content-type': this._content_type,
-  //       authorization: `Bearer ${token}`,
-  //     },
-  //     body: undefined,
-  //   }).then((res) => {
-  //     if (res.ok) {
-  //       return res.json();
-  //     }
-  //     return Promise.reject(`Ошибка: ${res.status}`);
-  //   })
-  //     .then((result) => result);
-  // }
-
-  
   // GET /users/me — возвращает информацию о пользователе (email и имя)
   getUserInfo() {
     return this._fetch('/users/me');
   }
-
-  // PATCH /users/me — обновляет информацию о пользователе (email и имя)
-  // setUserInfo({ name, email }) {
-  //   console.log(this._headers);
-  //   return this._fetch('/users/me', 'PATCH', { name, email });
-  // }
 
   setUserInfo({ name, email }) {
     return fetch(`${this._baseUrl}/users/me`, {
@@ -92,7 +55,6 @@ class Api {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
-      // headers: this._getHeaders(),
       body: JSON.stringify({ name, email }),
     }).then((res) => this._handleResponse(res));
   }
