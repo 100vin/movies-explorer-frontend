@@ -1,5 +1,5 @@
-// export const mainApiBaseUrl = 'https://api.diploma.100vin.nomoredomains.club';
-export const mainApiBaseUrl = 'http://localhost:3001';
+export const mainApiBaseUrl = 'https://api.diploma.100vin.nomoredomains.club';
+// export const mainApiBaseUrl = 'http://localhost:3001';
 export const moviesApiBaseUrl = 'https://api.nomoreparties.co/beatfilm-movies';
 
 export const mediaBaseUrl = 'https://api.nomoreparties.co';

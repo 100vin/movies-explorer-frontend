@@ -1,15 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useFormValidation from '../../hooks/useFormValidation';
 import { paths } from '../../utils/constants';
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin, resStatus }) => {
   const { values, errors, isValid, handleChange } = useFormValidation();
-  const [apiError, setApiError] = useState('');
-
+  const [isLocked, setIsLocked] = useState(false);
+  const [resMessage, setResMessage] = useState('');
+  
+  useEffect(() => {
+    setResMessage('');
+  }, [values]);
+  
+  useEffect(() => {
+    (resStatus && resStatus !== 200) && setResMessage('Ошибка сервера: ' + resStatus);
+  }, [resStatus]);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    isValid && onLogin(values, setApiError);
+    setIsLocked(true);
+    isValid && onLogin(values, setIsLocked);
   }
 
   return (
@@ -31,6 +41,7 @@ const Login = ({ onLogin }) => {
                 placeholder="user@yandex.ru"
                 required
                 value={values.email || ''}
+                disabled={isLocked}
                 onChange={handleChange}
               />
               <span className="auth__field-error">{errors.email}</span>
@@ -43,17 +54,18 @@ const Login = ({ onLogin }) => {
                 name="password"
                 required
                 value={values.password || ''}
+                disabled={isLocked}
                 onChange={handleChange}
               />
               <span className="auth__field-error">{errors.password}</span>
             </label>
           </fieldset>
           <fieldset className="auth__fieldset auth__fieldset_type_buttons">
-            <span className="auth__field-error auth__field-error_type_api">{apiError}</span>
+            <span className="auth__field-error auth__field-error_type_api">{resMessage}</span>
             <button
-              className={`auth__button ${isValid ? 'animation' : ''}`}
+              className={`auth__button ${(isValid && !isLocked) ? 'animation' : ''}`}
               type="submit"
-              disabled={!isValid}
+              disabled={!isValid || isLocked}
             >
               Войти
             </button>

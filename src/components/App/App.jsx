@@ -29,6 +29,8 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [userResStatus, setUserResStatus] = useState(false);
+  const [loginResStatus, setLoginResStatus] = useState(false);
+  const [registerResStatus, setRegisterResStatus] = useState(false);
 
   const [isNavPopupOpen, setIsNavPopupOpen] = useState(false);
   
@@ -59,7 +61,8 @@ const App = () => {
 
   useEffect(() => tokenCheck(), [isLoggedIn]);
 
-  const handleRegister = (userData, callback) => {
+  const handleRegister = (userData, lockCallback) => {
+    setRegisterResStatus(false);
     mainApi.register(userData)
       .then((res) => {
         setCurrentUser(res);
@@ -72,16 +75,19 @@ const App = () => {
         localStorage.setItem('token', res.token);
         mainApi.setToken(res.token);
         setIsLoggedIn(true);
-        callback('');
+        setRegisterResStatus(200);
+        lockCallback(false);
         navigate(paths.movies);
       })
       .catch((err) => {
         console.log(err);
-        callback(err);
+        setRegisterResStatus(err);
+        lockCallback(false);
       })
   }
 
-  const handleLogin = (userData, callback) => {
+  const handleLogin = (userData, lockCallback) => {
+    setLoginResStatus(false);
     mainApi.login(userData)
       .then((res) => {
         if (res.token) {
@@ -89,13 +95,15 @@ const App = () => {
           localStorage.setItem('token', res.token);
           mainApi.setToken(res.token);
           setIsLoggedIn(true);
-          callback('');
+          setLoginResStatus(200);
           navigate(paths.movies);
+          lockCallback(false);
         }
       })
       .catch((err) => {
         console.log(err);
-        callback(err);
+        setLoginResStatus(err);
+        lockCallback(false);
       })
   }
 
@@ -167,11 +175,11 @@ const App = () => {
       children: [
         {
           path: paths.login,
-          element: <Login onLogin={handleLogin} />,
+          element: <Login onLogin={handleLogin} resStatus={loginResStatus} />,
         },
         {
           path: paths.register,
-          element: <Register onRegister={handleRegister} />,
+          element: <Register onRegister={handleRegister} resStatus={registerResStatus} />,
         },
       ],
     },
